@@ -1,8 +1,29 @@
-# ActiveHash::Kaminari
+# ActiveHash::Kaminari [![Build Status](https://travis-ci.org/monochromegane/active_hash-kaminari.svg?branch=master)](https://travis-ci.org/monochromegane/active_hash-kaminari)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/active_hash/kaminari`. To experiment with that code, run `bin/console` for an interactive prompt.
+ActiveHash::Kaminari provides [Kaminari](https://github.com/amatsuda/kaminari) paginator to [ActiveHash](https://github.com/zilkey/active_hash).
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+Just prepend `ActiveHash::Paginatable` module.
+
+```rb
+class Country < ActiveHash::Base
+  prepend ActiveHash::Paginatable
+  ...
+end
+```
+
+So, ActiveHash class returns `Kaminari::PaginatableArray` instance that provides pagination methods (e.g. `page`, `per` and more page scope methods).
+
+```rb
+Country.all.page(1).per(10)
+```
+
+Of course, you can use this at view.
+
+```rb
+<%= paginate @counties %>
+```
 
 ## Installation
 
@@ -20,10 +41,6 @@ Or install it yourself as:
 
     $ gem install active_hash-kaminari
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,8 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/active_hash-kaminari.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/monochromegane/active_hash-kaminari.
 
 ## License
 
