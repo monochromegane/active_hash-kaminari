@@ -1,7 +1,7 @@
 require "active_hash/kaminari/version"
+require "active_hash/paginatable"
 
 module ActiveHash
   module Kaminari
-    # Your code goes here...
   end
 end
