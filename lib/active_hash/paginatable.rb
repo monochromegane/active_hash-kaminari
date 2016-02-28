@@ -21,6 +21,8 @@ module ActiveHash
         method_name         = :"find_all_by_#{field_name}"
         orignal_method_name = :"#{method_name}_org"
 
+        return if has_singleton_method?(orignal_method_name)
+
         the_meta_class.instance_eval do
           alias_method orignal_method_name, method_name
 
