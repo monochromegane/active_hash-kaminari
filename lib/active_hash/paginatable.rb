@@ -36,9 +36,9 @@ module ActiveHash
         return ary unless ary.is_a?(Array)
 
         ::Kaminari.paginate_array(ary, {
-          total_count: _data.count,
+          total_count: (_data || @records).count,
           offset:      0,
-          limit:       _data.count
+          limit:       (_data || @records).count
         })
       end
     end
