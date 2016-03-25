@@ -35,10 +35,11 @@ module ActiveHash
       def paginatize(ary)
         return ary unless ary.is_a?(Array)
 
+        count = ary.count
         ::Kaminari.paginate_array(ary, {
-          total_count: ary.count,
+          total_count: count,
           offset:      0,
-          limit:       ary.count
+          limit:       count.nonzero? ? count : 1
         })
       end
     end
